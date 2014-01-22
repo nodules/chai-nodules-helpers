@@ -1,0 +1,36 @@
+{
+  "name": "chai-nodules-helpers",
+  "version": "0.0.0",
+  "description": "nodules-specific assertion helpers for chai",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jshint --config ./.jshintrc ./lib ./test && ./node_modules/.bin/jscs ./lib ./test && ./node_modules/.bin/istanbul cover _mocha -- -u bdd -R spec ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nodules/chai-nodules-helpers.git"
+  },
+  "keywords": [
+    "assert",
+    "nodules",
+    "terror",
+    "objex",
+    "chai"
+  ],
+  "author": "Phillip Kovalev <twilightfeel@gmail.com> (https://github.com/kaero)",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/nodules/objex/master/LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "chai": "1.x",
+    "mocha": "1.x",
+    "istanbul": "0.x",
+    "jscs": "1.2.x",
+    "jshint": "2.x",
+    "objex": "0.3.x",
+    "terror": "0.3.x"
+  }
+}
