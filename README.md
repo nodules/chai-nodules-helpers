@@ -1,5 +1,20 @@
 # Nodules-specific assertions for [Chai](http://chaijs.com)
 
+## Installation and usage
+
+```console
+$ npm install chai-nodules-helpers
+```
+
+```javascript
+var assert = require('chai').use(require('chai-nodules-helpers')).assert;
+
+assert.throwTerror(...);
+assert.mixedProperly(...);
+```
+
+### Note
+
 All assertions available for [assert style](http://chaijs.com/guide/styles/#assert-section) only.
 
 ## [Objex](https://github.com/nodules/objex)
