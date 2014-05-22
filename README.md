@@ -19,9 +19,20 @@ All assertions available for [assert style](http://chaijs.com/guide/styles/#asse
 
 ## [Objex](https://github.com/nodules/objex)
 
-### assert.mixedProperly()
+### assert.isMixed()
 
-`assert.mixedProperly(Target, Mixin, mixinName, staticExceptions, prototypeExceptions, mixingArgs)`
+`assert.isMixed(Target, Mixin, mixinName, staticExceptions, prototypeExceptions, mixingArgs)`
+
+* `{Objex} Target` – constructor;
+* `{Function|Object} Mixin` – mixin;
+* `{String} mixinName` – used in assertions messages;
+* `{String[]} staticExceptions` – array of statics propertyies names excluded from assertions;
+* `{String[]} prototypeExceptions` – array of prototypes propertyies names excluded from assertions;
+* `{Array} [mixingArgs]` – additional arguments to pass to `mixin()` after `Mixin` itself.
+
+### assert.canBeMixed()
+
+`assert.canBeMixed(Target, Mixin, mixinName, staticExceptions, prototypeExceptions, mixingArgs)`
 
 * `{Objex} Target` – constructor, inheritor of the Objex, `mixin` method applies to;
 * `{Function|Object} Mixin` – mixin;
