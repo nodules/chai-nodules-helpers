@@ -6,25 +6,25 @@ describe('objex assertion helpers', function() {
     var chai = require('chai').use(require('../')),
         Objex = require('objex');
 
-    describe('assert.mixedProperly()', function() {
+    describe('assert.isMixed()', function() {
         it('should be exposed to chai.assert interface', function() {
-            assert.strictEqual(typeof chai.assert.mixedProperly, 'function', 'assert.mixedProperly exposed');
+            assert.strictEqual(typeof chai.assert.isMixed, 'function', 'assert.isMixed exposed');
         });
 
-        it('should not throw if mixin mixed properly', function() {
+        it('should not throw if mixin mixed is properly', function() {
             assert.doesNotThrow(function() {
                 var Target = Objex.create(),
                     Mixin = function() {};
 
-                Target.uniqueStaticProp = true;
-                Target.prototype.uniqueProtoProp = true;
+                Target.uniqueStaticMethod = function uniqueStaticMethod() {};
+                Target.prototype.uniqueProtoMethod = function uniqueProtoMethod() {};
                 Target.prototype.specialProtoProp = true;
 
-                Mixin.mixinStaticProp = true;
-                Mixin.prototype.mixinProtoProp = true;
-                Mixin.prototype.specialProtoProp = false;
+                Mixin.mixinStaticMethod = Target.mixinStaticMethod = function mixinStaticMethod() {};
+                Mixin.prototype.mixinProtoMethod = Target.prototype.mixinProtoMethod = function mixinProtoMethod() {};
+                Target.prototype.specialProtoProp = false;
 
-                chai.assert.mixedProperly(Target, Mixin, 'Mixin',
+                chai.assert.isMixed(Target, Mixin, 'Mixin',
                     [ 'prototype', 'super_', '__super' ], [ 'specialProtoProp' ]);
             });
         });
@@ -40,11 +40,49 @@ describe('objex assertion helpers', function() {
                 Mixin.mixinStaticProp = true;
                 Mixin.prototype.uniqueProtoProp = false;
 
-                chai.assert.mixedProperly(Target, Mixin, 'Mixin',
+                chai.assert.isMixed(Target, Mixin, 'Mixin',
                     [ 'prototype', 'super_', '__super' ], []);
-            }, function(error) {
-                return (error instanceof chai.AssertionError) && /uniqueProtoProp/ig.test(error.message);
+            }, chai.AssertionError, /mixinStaticProp/ig);
+        });
+    });
+
+    describe('assert.canBeMixed()', function() {
+        it('should be exposed to chai.assert interface', function() {
+            assert.strictEqual(typeof chai.assert.canBeMixed, 'function', 'assert.canBeMixed exposed');
+        });
+
+        it('should not throw if mixin mixed is properly', function() {
+            assert.doesNotThrow(function() {
+                var Target = Objex.create(),
+                    Mixin = function() {};
+
+                Target.uniqueStaticProp = true;
+                Target.prototype.uniqueProtoProp = true;
+                Target.prototype.specialProtoProp = true;
+
+                Mixin.mixinStaticProp = true;
+                Mixin.prototype.mixinProtoProp = true;
+                Mixin.prototype.specialProtoProp = false;
+
+                chai.assert.canBeMixed(Target, Mixin, 'Mixin',
+                    [ 'prototype', 'super_', '__super' ], [ 'specialProtoProp' ]);
             });
+        });
+
+        it('should throw error if mixin mixed incorrectly', function() {
+            assert.throws(function() {
+                var Target = Objex.create(),
+                    Mixin = function() {};
+
+                Target.uniqueStaticProp = true;
+                Target.prototype.uniqueProtoProp = true;
+
+                Mixin.mixinStaticProp = true;
+                Mixin.prototype.uniqueProtoProp = false;
+
+                chai.assert.canBeMixed(Target, Mixin, 'Mixin',
+                    [ 'prototype', 'super_', '__super' ], []);
+            }, chai.AssertionError, /uniqueProtoProp/ig);
         });
     });
 });
