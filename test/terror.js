@@ -9,11 +9,11 @@ describe('terror assertion helpers', function() {
     describe('assert.throwTerror()', function() {
         var CustomError = Terror.create('CustomError', {
                 MY_FAULT:
-                    [ 2001, 'It is my own fault, sir.' ]
+                    'It is my own fault, sir.'
             }),
             SpecialError = Terror.create('SpecialError', {
                 UNEXPECTED_APP_STATE:
-                    [ 3001, 'Application has an unexpected state, sir!' ]
+                    'Application has an unexpected state, sir!'
             });
 
         it('should be exposed to chai.assert interface', function() {
