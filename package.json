@@ -1,6 +1,6 @@
 {
   "name": "chai-nodules-helpers",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "nodules-specific assertion helpers for chai",
   "main": "lib/index.js",
   "scripts": {
