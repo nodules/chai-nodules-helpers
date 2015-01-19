@@ -1,5 +1,9 @@
 # Nodules-specific assertions for [Chai](http://chaijs.com)
 
+[![NPM version][npm-image]][npm-link]
+[![Build status][build-image]][build-link]
+[![devDependency status][devdeps-image]][devdeps-link]
+
 ## Installation and usage
 
 ```console
@@ -52,3 +56,9 @@ All assertions available for [assert style](http://chaijs.com/guide/styles/#asse
 * `{RegExp|String|Number} [spec]` – error specifier; can be a string (Terror code name), number (Terror code) or RegExp (used for message test).
 
 If second argument is not a constructor (function), then helper recognize it as an specifier arg `spec`.
+[npm-image]: https://img.shields.io/npm/v/chai-nodules-helpers.svg?style=flat
+[npm-link]: https://npmjs.org/package/chai-nodules-helpers
+[build-image]: https://img.shields.io/travis/nodules/chai-nodules-helpers.svg?style=flat
+[build-link]: https://travis-ci.org/nodules/chai-nodules-helpers
+[devdeps-image]: https://img.shields.io/david/dev/nodules/chai-nodules-helpers.svg?style=flat
+[devdeps-link]: https://david-dm.org/nodules/chai-nodules-helpers#info=peerDependencies
