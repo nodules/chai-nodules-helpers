@@ -35,7 +35,7 @@ describe('terror assertion helpers', function() {
         });
 
         it('should throw error with meaningful message if `spec` is passed, but ErrClass is not a Terror',
-           function() {
+            function() {
                 assert.throws(function() {
                     chai.assert.throwTerror(function() {
                         throw new Error('ok');
@@ -46,7 +46,7 @@ describe('terror assertion helpers', function() {
             });
 
         it('should throw error with meaningful message if error code specified by `spec` is not declared in ErrClass',
-           function() {
+            function() {
                 assert.throws(function() {
                     chai.assert.throwTerror(function() {
                         throw CustomError.createError();
