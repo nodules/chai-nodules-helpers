@@ -4,7 +4,7 @@
   "description": "nodules-specific assertion helpers for chai",
   "main": "lib/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jshint --config ./.jshintrc ./lib ./test && ./node_modules/.bin/jscs ./lib ./test && ./node_modules/.bin/istanbul cover _mocha -- -u bdd -R spec ./test"
+    "test": "eslint lib test && jscs lib test && istanbul cover _mocha -- -u bdd -R spec test"
   },
   "repository": {
     "type": "git",
@@ -26,10 +26,12 @@
   ],
   "devDependencies": {
     "chai": "1.x",
-    "mocha": "1.x",
+    "eslint": "^1.10.3",
+    "eslint-config-nodules": "^0.1.1",
     "istanbul": "0.x",
-    "jscs": "1.2.x",
-    "jshint": "2.x",
+    "jscs": "^2.6.0",
+    "jscs-preset-nodules": "^0.1.0",
+    "mocha": "1.x",
     "objex": "0.3.x",
     "terror": "^1.0.0"
   }
